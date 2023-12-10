@@ -11,11 +11,7 @@ const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-const bookSchema = new mongoose.Schema({
-  title: String,
-  author: String,
-  genre: String,
-});
+
 
 const Book = mongoose.model('Book', bookSchema);
 
