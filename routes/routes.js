@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const app = express();
-const booksData = require('./booksData');
 const PORT = process.env.PORT || 3000;
 
 mongoose.connect('mongodb://localhost:27017/bookstore', { useNewUrlParser: true, useUnifiedTopology: true });
@@ -18,13 +17,14 @@ const Book = mongoose.model('Book', bookSchema);
 app.use(bodyParser.json());
 
 app.get('/api/books', async (req, res) => {
-  try {
-    const books = await Book.find({});
-    res.json(booksData);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
+    try {
+      const books = await Book.find();
+      res.json(books); 
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+  
 
 app.post('/api/books', async (req, res) => {
   const book = new Book({
