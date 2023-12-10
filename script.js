@@ -1,6 +1,6 @@
 const bookForm = document.getElementById('bookForm');
 const bookList = document.getElementById('bookList');
-
+console.log('hello baby');
 async function fetchBooks() {
   try {
     const response = await fetch('/api/books');
@@ -16,7 +16,7 @@ async function fetchBooks() {
     console.error('Error fetching books:', err);
   }
 }
-
+console.log('hello baby 2');
 bookForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -33,8 +33,10 @@ bookForm.addEventListener('submit', async (e) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(bookData),
+      
     });
     fetchBooks();
+    console.log('hello baby 3');
   } catch (err) {
     console.error('Error adding book:', err);
   }
